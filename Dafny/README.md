@@ -1,3 +1,5 @@
+# Dafny Learning Notes 
+
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
 **Table of Contents**
 
@@ -11,7 +13,6 @@
 - [References](#references)
 
 <!-- markdown-toc end -->
-# Dafny Learning Notes 
 
 
 
