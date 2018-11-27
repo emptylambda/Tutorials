@@ -1,5 +1,3 @@
-# Dafny Learning Notes 
-
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
 **Table of Contents**
 
@@ -9,9 +7,12 @@
     - [``(`)`` back-quote / back-tick operator](#-back-quote--back-tick-operator)
     - [`reads` clause](#reads-clause)
     - [`modifies` clause](#modifies-clause)
+    - [`!= null` warning](#-null-warning)
 - [References](#references)
 
 <!-- markdown-toc end -->
+# Dafny Learning Notes 
+
 
 
 # Basic Types 
