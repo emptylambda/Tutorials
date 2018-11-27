@@ -66,7 +66,9 @@ Multiple `modifies` clauses are treated using _set union_.
 ## `!= null` warning
 First of all, what is `null`?  
 `null` is a literal residing in every reference type!  
+
 > The special value null is part of every reference type. (Section 5.1 Reference Type - Dafny Lang. Ref.)
+
 It is a VALUE and therefore can be used as one.  
 
 If you use newer version (since Dec 2017 verson 2.0.1) of Dafny (including the web instance), chances are you will come across this warning while copy-pasting some old Dafny code: 
