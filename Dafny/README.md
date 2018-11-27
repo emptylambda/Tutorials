@@ -1,5 +1,19 @@
 # Dafny Learning Notes 
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
+**Table of Contents**
+
+- [Dafny Learning Notes](#dafny-learning-notes)
+- [Basic Types](#basic-types)
+- [Framing](#framing)
+    - [``(`)`` back-quote / back-tick operator](#-back-quote--back-tick-operator)
+    - [`reads` clause](#reads-clause)
+    - [`modifies` clause](#modifies-clause)
+- [References](#references)
+
+<!-- markdown-toc end -->
+
+
 # Basic Types 
 There are TWO distinctive type groups in Dafny: (1) the Value types and (2) the Reference types. 
 
