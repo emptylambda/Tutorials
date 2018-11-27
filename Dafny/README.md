@@ -17,8 +17,10 @@
 # Basic Types 
 There are TWO distinctive type groups in Dafny: (1) the Value types and (2) the Reference types. 
 
-Value types include normal values like integers, booleans PLUS _sets, sequences, and multisets_  
+Value types include normal values like integers, booleans PLUS _tuples, sets, sequences, and multisets_  
+
 Reference types include _Arrays and Objects_  
+
 
 # Framing
 
@@ -58,6 +60,32 @@ If no `modifies` clause is given, the method can only modify the objects it crea
 loops can also be given `modifies` clause! (ToDo)  
 
 Multiple `modifies` clauses are treated using _set union_.  
+
+## `!= null` warning
+First of all, what is `null`?  
+`null` is a literal residing in every reference type!  
+> The special value null is part of every reference type. (Section 5.1 Reference Type - Dafny Lang. Ref.)
+It is a VALUE and therefore can be used as one.  
+
+If you use newer version (since Dec 2017 verson 2.0.1) of Dafny (including the web instance), chances are you will come across this warning while copy-pasting some old Dafny code: 
+
+> the type of the other operand is a non-null type, so this comparison with 'null' will always return 'true' (to make it possible for variable 'a' to have the value 'null', declare its type to be 'array?<int>')	
+
+This is the implementation of first footnote in Dafny official language reference, "non-nullable types" extension. This extension further seperates reference types into 2 groups. 
+
+In short, if you have a type `C` in Dafny, you have 2 versions of this type:  
+	1. C which is non-nullable (you can NEVER point a null to objects of this type)
+	2. C? potentially nullable type
+	
+Notice `C?` is the _name_ of the nullable type variant! (`?` is NOT an operator!)  
+
+So what does the warning really say?  
+In previous Dafny, it is the obligation of the programmer to make sure certain references are not null to begin/end with methods working on these references, resulting `!= null` comparison all over the place.  
+In the new Dafny, this "sanity check of non-null" is lifted to the tool itself, so you dont have to do `!= null` check anymore in normal usages!  
+
+Now, if you DO want to accomodate potentially null pointing cases, make sure you use the `C?` type!  
+
+
 
 # References
 [Dafny language ref](https://github.com/Microsoft/dafny/blob/master/Docs/DafnyRef/out/DafnyRef.pdf)
