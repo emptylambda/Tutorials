@@ -5,6 +5,7 @@
 
 - [Dafny Learning Notes](#dafny-learning-notes)
 - [Basic Types](#basic-types)
+- [`predicate` and `function`](#predicate-and-function)
 - [Framing](#framing)
     - [``(`)`` back-quote / back-tick operator](#-back-quote--back-tick-operator)
     - [`reads` clause](#reads-clause)
@@ -19,10 +20,14 @@
 # Basic Types 
 There are TWO distinctive type groups in Dafny: (1) the Value types and (2) the Reference types. 
 
-Value types include normal values like integers, booleans PLUS _tuples, sets, sequences, and multisets_  
+	1. Value types include normal values like integers, booleans PLUS _tuples, sets, sequences, and multisets_  
 
-Reference types include _Arrays and Objects_  
+	2. Reference types include _Arrays and Objects_  
 
+# `predicate` and `function`
+`predicate` IS `function`; the only difference is that `predicate` only returns a single `bool` as its return type.  
+The practical reason why we need `predicate` rather than using more general `function`?  
+Ans: you can omitting the return type and a few keystrokes :)  
 
 # Framing
 
