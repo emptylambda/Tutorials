@@ -23,9 +23,8 @@
 # Basic Types 
 There are TWO distinctive type groups in Dafny: (1) the Value types and (2) the Reference types. 
 
-	1. Value types include normal values like integers, booleans PLUS _tuples, sets, sequences, and multisets_  
-
-	2. Reference types include _Arrays and Objects_  
+1. Value types include normal values like integers, booleans PLUS _tuples, sets, sequences, and multisets_  
+2. Reference types include _Arrays and Objects_  
 
 # `predicate` and `function`
 `predicate` IS `function`; the only difference is that `predicate` only returns a single `bool` as its return type.  
@@ -102,6 +101,7 @@ Now, if you DO want to accomodate potentially null pointing cases, make sure you
 
 # Troubleshooting Guide 
 This section is contributed by [Simon Robillard](http://cse.chalmers.se/~simrob/), a huge thank you for his work and sharing :) 
+Original guide can be found [here](http://www.cse.chalmers.se/edu/year/2017/course/TDA567_Testing_debugging_and_verification/dafny_troubleshooting.pdf)
 
 ## Tips for better specifications 
 Remeber, writing specifications is just like writing the code. Decent coding practices can get you a long way down the road while bad coding habbits can occationally bite you in the butt. Now, the whole point of writing specifications and verification is to prevent these hidden bugs hence the verification process is designed to report early with a much strick checking. Therefore, a wrongly specified spec SHOULD not get to you walk at all, let along walking the through the valley of the shadown of bugs! 
@@ -117,12 +117,24 @@ Remeber, writing specifications is just like writing the code. Decent coding pra
    + Algebaric data types (Tuples and Enumerations) can help with the code and spec :) 
 
 3. Boolean values and boolean operators are first-class citizen in Verification
-   + 
+   + Boolean values are, well, Boolean values. So you can use them directly (i.e. avoid writing `b == true` or `b == false`, just write `b` or `!b`
+   + Dont forget `<==>` (reads "If and ONLY IF") operator (when you start to write a lot of `==>`s) 
+   + If the method must satisfy different post-conditions based on the input value, use an implication to describe those conditional behaviors:
+   ```
+	   ensures P ==> Q1
+	   ensures !P ==> Q2
+   ```
+   The condition `P` should be based on values before the execution (and therefore use `old`), otherwise these assertions might not mean what you think they do.
 
 
 ## Common Error Messages and how to deal with them
++ `index out of range`
 
++ `assertion violation`
 
++ `call may violate context's modifies clause`
+
++ `array may be null` ONLY in old Dafny 1.9x, see the [`!= null`](#-null-warning)
 
 # References
 [Dafny language ref](https://github.com/Microsoft/dafny/blob/master/Docs/DafnyRef/out/DafnyRef.pdf)
