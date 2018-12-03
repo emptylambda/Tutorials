@@ -11,6 +11,9 @@
     - [`reads` clause](#reads-clause)
     - [`modifies` clause](#modifies-clause)
     - [`!= null` warning](#-null-warning)
+- [Troubleshooting Guide](#troubleshooting-guide)
+    - [Tips for better specifications](#tips-for-better-specifications)
+    - [Common Error Messages and how to deal with them](#common-error-messages-and-how-to-deal-with-them)
 - [References](#references)
 
 <!-- markdown-toc end -->
@@ -28,6 +31,7 @@ There are TWO distinctive type groups in Dafny: (1) the Value types and (2) the 
 `predicate` IS `function`; the only difference is that `predicate` only returns a single `bool` as its return type.  
 The practical reason why we need `predicate` rather than using more general `function`?  
 Ans: you can omitting the return type and a few keystrokes :)  
+
 
 # Framing
 
@@ -93,6 +97,30 @@ In previous Dafny, it is the obligation of the programmer to make sure certain r
 In the new Dafny, this "sanity check of non-null" is lifted to the tool itself, so you dont have to do `!= null` check anymore in normal usages!  
 
 Now, if you DO want to accomodate potentially null pointing cases, make sure you use the `C?` type!  
+
+
+
+# Troubleshooting Guide 
+This section is contributed by [Simon Robillard](http://cse.chalmers.se/~simrob/), a huge thank you for his work and sharing :) 
+
+## Tips for better specifications 
+Remeber, writing specifications is just like writing the code. Decent coding practices can get you a long way down the road while bad coding habbits can occationally bite you in the butt. Now, the whole point of writing specifications and verification is to prevent these hidden bugs hence the verification process is designed to report early with a much strick checking. Therefore, a wrongly specified spec SHOULD not get to you walk at all, let along walking the through the valley of the shadown of bugs! 
+
+1. KISS (keep it small and simple) 
+   + Keeping things simple is useful when coding, but even more important for specification. Your specification should be complete, but if it is complex and unreadable it is not likely to be useful (or correct).
+   + Keep the `modifies` minimal! In the modifies clause, include only what is actually modified and nothing else. Avoid modifies this as it means that any field of this object can be modified. Instead detail exactly the fields that are modified, and only those.
+
+2. USe *Data types* to your aid 
+   + Use the built-in (value) types such as: *`sets, multi-sets, sequences, maps`*. Don't only stick to `arrays`
+   + Notice these built-in types and their associated properties can help you in saving some specs! (e.g. uniqueness, order) 
+   + Choosing the right data type not only makes the specification much easier to read, but data types are in themselves a form of specification!
+   + Algebaric data types (Tuples and Enumerations) can help with the code and spec :) 
+
+3. Boolean values and boolean operators are first-class citizen in Verification
+   + 
+
+
+## Common Error Messages and how to deal with them
 
 
 
